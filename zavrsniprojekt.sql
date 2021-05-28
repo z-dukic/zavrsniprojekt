@@ -13,29 +13,65 @@ dob int NOT NULL
 
 CREATE TABLE potrosnjakalorija (
 sifra int PRIMARY KEY NOT NULL auto_increment,
+korisnik int,
 aktivnosti int,
 vrijemetrajanja int
 );
 
 CREATE TABLE aktivnosti (
 sifra int PRIMARY KEY NOT NULL auto_increment,
-imeaktivnosti varchar(50),
-potrosenekalorije int
+potrosnjakalorija int,
+imeaktivnosti varchar(50)
 );
 
 CREATE TABLE hrana (
 sifra int PRIMARY KEY NOT NULL auto_increment,
+korisnik int,
 imehrane varchar(50),
 tezinahrane int
 );
 
 CREATE TABLE imehrane (
 sifra int PRIMARY KEY NOT NULL auto_increment,
+hrana int,
 kalorije INT,
 proteini int,
 ugljikohidrati int,
 masti int
 );
+
+
+alter table potrosnjakalorija add foreign key (korisnik) references korisnik(sifra);
+alter table aktivnosti add foreign key (potrosnjakalorija) references potrosnjakalorija(sifra);
+
+alter table hrana add foreign key (korisnik) references korisnik(sifra);
+alter table imehrane add foreign key (hrana) references hrana(sifra);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
