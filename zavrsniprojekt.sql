@@ -7,15 +7,13 @@ sifra int PRIMARY KEY NOT NULL auto_increment,
 nadimak varchar(50) NOT null,
 visina int NOT NULL,
 tezina int NOT NULL,
-spol varchar(50),
+spol boolean not null,
 dob int NOT NULL
 );
 
 CREATE TABLE potrosnjakalorija (
-sifra int PRIMARY KEY NOT NULL auto_increment,
 korisnik int,
-aktivnosti int,
-vrijemetrajanja int
+aktivnosti int
 );
 
 CREATE TABLE aktivnosti (
@@ -25,10 +23,8 @@ imeaktivnosti varchar(50)
 );
 
 CREATE TABLE hrana (
-sifra int PRIMARY KEY NOT NULL auto_increment,
 korisnik int,
-imehrane varchar(50),
-tezinahrane int
+imehrane int
 );
 
 CREATE TABLE imehrane (
@@ -40,12 +36,13 @@ ugljikohidrati int,
 masti int
 );
 
-
 alter table potrosnjakalorija add foreign key (korisnik) references korisnik(sifra);
-alter table aktivnosti add foreign key (potrosnjakalorija) references potrosnjakalorija(sifra);
+alter table potrosnjakalorija add foreign key (aktivnosti) references aktivnosti(sifra);
 
 alter table hrana add foreign key (korisnik) references korisnik(sifra);
-alter table imehrane add foreign key (hrana) references hrana(sifra);
+alter table hrana add foreign key (imehrane) references imehrane(sifra);
+
+
 
 
 
