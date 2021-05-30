@@ -19,6 +19,7 @@ aktivnosti int
 CREATE TABLE aktivnosti (
 sifra int PRIMARY KEY NOT NULL auto_increment,
 imeaktivnosti varchar(50),
+potrosenekalorije int,
 vrijemetrajanja int
 );
 
